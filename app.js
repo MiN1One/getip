@@ -9,7 +9,6 @@ app.use(require('request-ip').mw());
 app.use(express.json());
 
 app.get('/', (req, res, _next) => {
-  
   let ipv6 = req.clientIp;
   let ipv4 = req.clientIp;
 
@@ -23,12 +22,6 @@ app.get('/', (req, res, _next) => {
     address.correctForm();
     ipv6 = address.to4in6();
   }
-
-  console.log({
-    ipv6,
-    ipv4,
-    country
-  });
 
   res.status(200).json({
     ipv4,
